@@ -8,10 +8,13 @@ public class EmployeeManager {
         this.employees = employees;
     }
 
-    public  void addEmployee(Employee employee){
+    public  void addEmployee(String firstName, String lastName, String position, int salary){
+        Employee employee = new Employee(firstName, lastName, position, salary);
+
         Integer keyEmployee = employee.getEmployeeID();
         employees.put(keyEmployee,employee);
     }
+
     public void removeEmployee(Employee employee){
         if(employees.containsKey(employee.getEmployeeID()))
             employees.remove(employee.getEmployeeID());
@@ -27,32 +30,33 @@ public class EmployeeManager {
         else
             System.out.println("Pracownik o takim ID nie istnieje");
     }
+
     public Employee searchEmployeeByID(int employeeID) {
         if(employees.containsKey(employeeID)){
             return employees.get(employeeID);
         }
         else
             System.out.println("Nie znaleziono pracownika o danym ID");
-           return null;
+        return null;
     }
+
     public void listAllEmployees(){
         ArrayList<Employee> employeeList = new ArrayList<>(employees.values());
         for (Employee employee: employeeList
-             ) {
+        ) {
             System.out.println(employee);
         }
     }
-    public HashSet<Employee> searchEmployeesByPosition(String position){
-         HashSet<Employee> employeeList = new HashSet<>(employees.values());
+
+    public HashSet<Employee> searchEmployeesByLastName(String lastName){
+        HashSet<Employee> employeeList = new HashSet<>(employees.values());
         Iterator<Employee> employeeIterator = employeeList.iterator();
         while(employeeIterator.hasNext())
         {
             Employee employee = employeeIterator.next();
-            if(!employee.getPosition().equals(position))
+            if(!employee.getLastName().equals(lastName))
                 employeeIterator.remove();
         }
         return employeeList;
     }
-
-
 }
