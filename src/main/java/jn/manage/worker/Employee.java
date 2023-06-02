@@ -1,10 +1,13 @@
+package jn.manage.worker;
+
+
 public class Employee {
-    private String firstName;
-    private String lastName;
-    private String position;
-    private int employeeID;
-    private int salary;
-    private static int idCounter = 0;
+    public String firstName;
+    public String lastName;
+    public String position;
+    public int employeeID;
+    public int salary;
+    private static int idCounter = 1;
 
     public Employee(String firstName, String lastName, String position,  int salary) {
         this.firstName = firstName;
@@ -29,7 +32,6 @@ public class Employee {
     public String getLastName() {
         return lastName;
     }
-
     @Override
     public String toString() {
         return "Employee{" +
@@ -40,9 +42,6 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
-
-
-
 
     public void setSalary(int salary) {
         this.salary = salary;
